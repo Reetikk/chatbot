@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import CGCNotesButton from './CGCNotesButton';
 
-const Navigation = () => {
+const Navigation = ({ showCGCInNavbar }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -58,6 +59,10 @@ const Navigation = () => {
                 <span className="xl:hidden">{item.name.split(' ')[0]}</span>
               </Link>
             ))}
+            {/* CGC Notes in Navbar */}
+            {showCGCInNavbar && (
+              <CGCNotesButton inNavbar={true} />
+            )}
           </div>
 
           {/* Right side controls */}
@@ -103,6 +108,12 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            {/* CGC Notes in Mobile Menu */}
+            {showCGCInNavbar && (
+              <div className="px-4 py-3">
+                <CGCNotesButton inNavbar={true} />
+              </div>
+            )}
           </div>
         </div>
       </div>
